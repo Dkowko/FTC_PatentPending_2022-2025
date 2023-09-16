@@ -12,7 +12,6 @@ import org.firstinspires.ftc.teamcode.botconfigs.pp;
 import org.firstinspires.ftc.teamcode.hardware.GamepadSystem;
 
 // Rohan's teleop to test claw for cones
-@Disabled
 @TeleOp(name="patentPendingBot", group="ClawLiftBot")
 public class patentPendingBot extends OpMode {
 
