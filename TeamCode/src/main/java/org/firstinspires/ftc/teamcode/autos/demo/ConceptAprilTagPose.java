@@ -63,6 +63,9 @@ public class ConceptAprilTagPose extends LinearOpMode {
      */
     private VisionPortal visionPortal;
 
+    public double leftFlag = 0;
+    public double rightFlag = 6;
+
     @Override
     public void runOpMode() {
 
@@ -173,6 +176,7 @@ public class ConceptAprilTagPose extends LinearOpMode {
                 telemetry.addLine(String.format("XYZ %6.1f %6.1f %6.1f  (inch)", detection.ftcPose.x, detection.ftcPose.y, detection.ftcPose.z));
                 telemetry.addLine(String.format("PRY %6.1f %6.1f %6.1f  (deg)", detection.ftcPose.pitch, detection.ftcPose.roll, detection.ftcPose.yaw));
                 telemetry.addLine(String.format("RBE %6.1f %6.1f %6.1f  (inch, deg, deg)", detection.ftcPose.range, detection.ftcPose.bearing, detection.ftcPose.elevation));
+                telemetry.addLine(locationFromX(detection.ftcPose.x) + "");
             } else {
                 telemetry.addLine(String.format("\n==== (ID %d) Unknown", detection.id));
                 telemetry.addLine(String.format("Center %6.0f %6.0f   (pixels)", detection.center.x, detection.center.y));
@@ -185,5 +189,12 @@ public class ConceptAprilTagPose extends LinearOpMode {
         telemetry.addLine("RBE = Range, Bearing & Elevation");
 
     }   // end method telemetryAprilTag()
+
+    public int locationFromX(double x) {
+
+        if (x < leftFlag) return 0;
+        if (x > rightFlag) return 2;
+        return 1;
+    }
 
 }   // end class

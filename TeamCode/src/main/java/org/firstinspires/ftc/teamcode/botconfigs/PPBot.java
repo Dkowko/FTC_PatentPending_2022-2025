@@ -22,5 +22,6 @@ public class PPBot extends HolonomicBot {
         if (gamepad1.a) speedFactor = midSpeed;
         if (gamepad1.b) speedFactor = slowSpeed;
         if (gamepad1.x) speedFactor = fastSpeed;
+        tele.addData("speedFactor", speedFactor);
     }
 }
