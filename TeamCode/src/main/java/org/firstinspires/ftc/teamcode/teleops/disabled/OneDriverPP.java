@@ -1,20 +1,18 @@
-package org.firstinspires.ftc.teamcode.teleops;
+package org.firstinspires.ftc.teamcode.teleops.disabled;
 
 import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 import com.arcrobotics.ftclib.hardware.ServoEx;
 import com.arcrobotics.ftclib.hardware.SimpleServo;
-import com.arcrobotics.ftclib.hardware.motors.Motor;
-import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.teamcode.GyroWrap;
+import org.firstinspires.ftc.teamcode.hardware.GyroWrap;
 import org.firstinspires.ftc.teamcode.botconfigs.pp;
 import org.firstinspires.ftc.teamcode.hardware.GamepadSystem;
 
 // Rohan's teleop to test claw for cones
+@Disabled
 @TeleOp(name="OneDriverPP", group="ClawLiftBot")
 public class OneDriverPP extends OpMode {
 

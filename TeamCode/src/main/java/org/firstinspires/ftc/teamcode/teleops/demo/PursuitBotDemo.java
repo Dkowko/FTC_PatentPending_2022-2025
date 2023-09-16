@@ -1,25 +1,21 @@
-package org.firstinspires.ftc.teamcode.teleops;
+package org.firstinspires.ftc.teamcode.teleops.demo;
 
 import com.arcrobotics.ftclib.command.PurePursuitCommand;
 import com.arcrobotics.ftclib.geometry.Pose2d;
-import com.arcrobotics.ftclib.geometry.Translation2d;
 import com.arcrobotics.ftclib.purepursuit.Waypoint;
 import com.arcrobotics.ftclib.purepursuit.waypoints.EndWaypoint;
 import com.arcrobotics.ftclib.purepursuit.waypoints.GeneralWaypoint;
 import com.arcrobotics.ftclib.purepursuit.waypoints.StartWaypoint;
-import com.arcrobotics.ftclib.trajectory.Trajectory;
-import com.arcrobotics.ftclib.trajectory.TrajectoryConfig;
-import com.arcrobotics.ftclib.trajectory.TrajectoryGenerator;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
 import org.firstinspires.ftc.teamcode.botconfigs.PursuitBot;
-
 import java.util.ArrayList;
 
 // pure pursuit algorithm demo
-@TeleOp(name="PursuitBotDemoTrajectory", group="PursuitBot")
-public class PursuitBotDemoTrajectory extends LinearOpMode {
+@Disabled
+@TeleOp(name="PursuitBotDemo", group="PursuitBot")
+public class PursuitBotDemo extends LinearOpMode {
 
     // robot reference
     public PursuitBot robot;
@@ -33,8 +29,6 @@ public class PursuitBotDemoTrajectory extends LinearOpMode {
     public double followRadius = 5;
     public double positionBuffer = 1;
     public double rotationBuffer = Math.toRadians(15);
-    public double maxVelocity = 0.5;
-    public double maxAcceleration = 0.5;
 
     @Override
     public void runOpMode() {
@@ -130,25 +124,14 @@ public class PursuitBotDemoTrajectory extends LinearOpMode {
             // debug
             DebugPartial("return home");
 
-            TrajectoryConfig config = new TrajectoryConfig(maxVelocity, maxAcceleration);
-            Trajectory trajectory = TrajectoryGenerator.generateTrajectory(
-                    robot.odometry.getPose(), new ArrayList<>(), new Pose2d(), config);
-
             // create start and end waypoints from current pose to origin pose
-            double totalTime = trajectory.getTotalTimeSeconds();
-            Waypoint[] point = new Waypoint[100];
-            for (int i = 1; i < point.length - 1; i++) {
-                Pose2d pose = trajectory.sample((double)i / point.length * totalTime).poseMeters;
-                point[i] = new GeneralWaypoint(pose, movementSpeed, turnSpeed, followRadius);
-            }
-
-            point[0] = new StartWaypoint(trajectory.sample(0).poseMeters);
-            point[point.length - 1] = new EndWaypoint(trajectory.sample(totalTime).poseMeters,
+            Waypoint start = new StartWaypoint(robot.odometry.getPose());
+            Waypoint end = new EndWaypoint(new Pose2d(),
                     movementSpeed, turnSpeed, followRadius, positionBuffer, rotationBuffer);
 
             // follow path formed by waypoints
             PurePursuitCommand command = new PurePursuitCommand(
-                    robot.drive, robot.odometry, point);
+                    robot.drive, robot.odometry, start, end);
             RunCommand(command, "return home");
         }
     }
@@ -166,7 +149,7 @@ public class PursuitBotDemoTrajectory extends LinearOpMode {
             command.execute();
             DebugFull(state);
         }
-
+        //hello world
         // end robot movement
         command.end(true);
         robot.drive.stop();

@@ -1,13 +1,16 @@
-package org.firstinspires.ftc.teamcode.autos;
+package org.firstinspires.ftc.teamcode.autos.disabled;
 
 import com.arcrobotics.ftclib.hardware.ServoEx;
 import com.arcrobotics.ftclib.hardware.SimpleServo;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+import org.firstinspires.ftc.teamcode.vision.VisionDevice;
 import org.openftc.apriltag.AprilTagDetection;
 
+@Disabled
 @Autonomous(name = "WithCamWithCone", group = "WithCamWithCone")
 public class AutoWithCone extends LinearOpMode {
 

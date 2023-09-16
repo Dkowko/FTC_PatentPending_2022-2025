@@ -1,9 +1,10 @@
-package org.firstinspires.ftc.teamcode.autos;
+package org.firstinspires.ftc.teamcode.vision;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.teamcode.vision.AprilTagDetectionPipeline;
 import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
@@ -31,9 +32,9 @@ public class VisionDevice {
     double tagsize = 0.166;
 
     // Tag ID 1, 2, and 3 from the 36h11 family
-    int LEFT = 1;
-    int MIDDLE = 2;
-    int RIGHT = 3;
+    public int LEFT = 1;
+    public int MIDDLE = 2;
+    public int RIGHT = 3;
 
     AprilTagDetection tagOfInterest = null;
 

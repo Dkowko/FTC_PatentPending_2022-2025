@@ -1,9 +1,10 @@
-package org.firstinspires.ftc.teamcode.teleops;
+package org.firstinspires.ftc.teamcode.teleops.disabled;
 
 import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 import com.arcrobotics.ftclib.hardware.ServoEx;
 import com.arcrobotics.ftclib.hardware.SimpleServo;
 import com.arcrobotics.ftclib.hardware.motors.Motor;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -11,6 +12,7 @@ import org.firstinspires.ftc.teamcode.botconfigs.PursuitBot;
 import org.firstinspires.ftc.teamcode.hardware.GamepadSystem;
 
 // Rohan's teleop to test claw for cones
+@Disabled
 @TeleOp(name="ClawLiftTele", group="ClawLiftBot")
 public class ClawLiftTele extends OpMode {
 

@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.teleops;
+package org.firstinspires.ftc.teamcode.teleops.demo;
 
 import com.arcrobotics.ftclib.command.PurePursuitCommand;
 import com.arcrobotics.ftclib.geometry.Translation2d;
@@ -12,15 +12,16 @@ import com.arcrobotics.ftclib.purepursuit.waypoints.GeneralWaypoint;
 import com.arcrobotics.ftclib.purepursuit.waypoints.StartWaypoint;
 import com.arcrobotics.ftclib.trajectory.TrajectoryConfig;
 import com.arcrobotics.ftclib.trajectory.TrajectoryGenerator;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.sun.tools.javac.util.Convert;
 
 import org.firstinspires.ftc.teamcode.botconfigs.PursuitBot;
 import java.util.ArrayList;
 
 // pure pursuit algorithm demo
 //hi
+@Disabled
 @TeleOp(name="PursuitBotDemo4", group="PursuitBot")
 public class PursuitBotDemo4 extends LinearOpMode {
 

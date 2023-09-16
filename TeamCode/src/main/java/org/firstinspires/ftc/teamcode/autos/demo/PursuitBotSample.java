@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.autos;
+package org.firstinspires.ftc.teamcode.autos.demo;
 
 import com.arcrobotics.ftclib.geometry.Pose2d;
 import com.arcrobotics.ftclib.purepursuit.Path;
@@ -11,8 +11,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.teamcode.botconfigs.PursuitBot;
 
 // pure pursuit algorithm demo
-@Autonomous(name="PursuitBotAuto", group="PursuitBot")
-public class PursuitBotAuto extends LinearOpMode {
+@Autonomous(name="PursuitBotSample", group="PursuitBot")
+public class PursuitBotSample extends LinearOpMode {
 
     // robot reference
     public PursuitBot robot;
