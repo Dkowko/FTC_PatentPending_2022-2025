@@ -18,10 +18,21 @@ public class PPBotAuto extends LinearOpMode {
         waitForStart();
 
         robot.autonomousMove(10, 0, 0, robot.slowSpeed, this);
+
+        telemetry.addLine("done 1");
+        telemetry.update();
         sleep(1000);
+
         robot.autonomousMove(0, 10, 0, robot.slowSpeed, this);
+
+        telemetry.addLine("done 2");
+        telemetry.update();
         sleep(1000);
+
         robot.autonomousMove(0, 0, 10, robot.slowSpeed, this);
+
+        telemetry.addLine("done 3");
+        telemetry.update();
         sleep(1000);
     }
 }

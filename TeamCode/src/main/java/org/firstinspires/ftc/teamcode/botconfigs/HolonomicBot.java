@@ -90,10 +90,15 @@ public class HolonomicBot {
     public void waitUntilNotBusy(LinearOpMode opMode) {
 
         tele.update();
-        while (/**isBusy() &&**/ opMode.opModeIsActive()) { }
+        while (isBusy() && opMode.opModeIsActive()) { tele.update();}
     }
 
     public boolean isBusy() {
+
+        tele.addData("is busy", "" + motorFL.motor.isBusy() + motorFR.motor.isBusy() + motorBL.motor.isBusy() + motorBR.motor.isBusy());
+
+        tele.addData("target", "" + motorFL.motor.getTargetPosition() + " " + motorFR.motor.getTargetPosition() + " " + motorBR.motor.getTargetPosition() + " " + motorBL.motor.getTargetPosition());
+        tele.addData("current", "" + motorFL.motor.getCurrentPosition() + " " + motorFR.motor.getCurrentPosition() + " " + motorBR.motor.getCurrentPosition() + " " + motorBL.motor.getCurrentPosition());
 
         return motorFL.motor.isBusy() || motorFR.motor.isBusy() || motorBL.motor.isBusy() || motorBR.motor.isBusy();
     }
@@ -109,9 +114,10 @@ public class HolonomicBot {
     public void autonomousMove(double x, double y, double rot, double speed, LinearOpMode opMode) {
 
         setTargetPosition(x, y, rot);
+        setRunMode(DcMotor.RunMode.RUN_TO_POSITION);
         toTargetPosition(speed);
         waitUntilNotBusy(opMode);
-        driveRobotCentric(0, 0, 0);
+        //driveRobotCentric(0, 0, 0);
     }
 
     public void driveRobotCentric(double x, double y, double rot) {
