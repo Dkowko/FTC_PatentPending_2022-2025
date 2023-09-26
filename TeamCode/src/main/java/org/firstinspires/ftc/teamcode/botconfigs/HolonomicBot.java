@@ -81,10 +81,10 @@ public class HolonomicBot {
     public void toTargetPosition(double speed) {
 
         tele.addData("TO TARGET (speed)", speed);
-        motorFL.set(speed);
-        motorFR.set(speed);
-        motorBL.set(speed);
-        motorBR.set(speed);
+        motorFL.motor.setPower(speed);
+        motorFR.motor.setPower(speed);
+        motorBL.motor.setPower(speed);
+        motorBR.motor.setPower(speed);
     }
 
     public void waitUntilNotBusy(LinearOpMode opMode) {
