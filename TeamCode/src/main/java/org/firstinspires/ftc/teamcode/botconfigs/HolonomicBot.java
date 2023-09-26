@@ -44,40 +44,43 @@ public class HolonomicBot {
         drive = new MecDriveFlip(motorFL, motorFR, motorBL, motorBR);
 
         // run mode
-        setRunMode(Motor.RunMode.PositionControl);
+        setRunMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        setRunMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
-    public void setRunMode(Motor.RunMode mode) {
+    public void setRunMode(DcMotor.RunMode mode) {
 
-        motorFL.setRunMode(mode);
-        motorFR.setRunMode(mode);
-        motorBL.setRunMode(mode);
-        motorBR.setRunMode(mode);
+        motorFL.motor.setMode(mode);
+        motorFR.motor.setMode(mode);
+        motorBL.motor.setMode(mode);
+        motorBR.motor.setMode(mode);
     }
 
     public double[] toMotor(double x, double y, double rot) {
 
         return new double[] {
-                +x +y +rot,
                 +x -y +rot,
                 -x +y +rot,
-                -x -y +rot
+                -x -y +rot,
+                +x +y +rot
         };
     }
 
     public void setTargetPosition(double x, double y, double rot) {
 
+        tele.addData("SET TARGET (x, y, rot)", x + ", " + y + ", " + rot);
         double[] asMotor = toMotor(x, y, rot);
         setTargetPosition(new int[] {
-                motorFL.getCurrentPosition() + (int)(asMotor[0] * tickPerInch),
-                motorFR.getCurrentPosition() + (int)(asMotor[1] * tickPerInch),
-                motorBL.getCurrentPosition() + (int)(asMotor[2] * tickPerInch),
-                motorBR.getCurrentPosition() + (int)(asMotor[3] * tickPerInch)
+                motorFL.motor.getCurrentPosition() + (int)(asMotor[0] * tickPerInch),
+                motorFR.motor.getCurrentPosition() + (int)(asMotor[1] * tickPerInch),
+                motorBL.motor.getCurrentPosition() + (int)(asMotor[2] * tickPerInch),
+                motorBR.motor.getCurrentPosition() + (int)(asMotor[3] * tickPerInch)
         });
     }
 
     public void toTargetPosition(double speed) {
 
+        tele.addData("TO TARGET (speed)", speed);
         motorFL.set(speed);
         motorFR.set(speed);
         motorBL.set(speed);
@@ -86,7 +89,8 @@ public class HolonomicBot {
 
     public void waitUntilNotBusy(LinearOpMode opMode) {
 
-        while (isBusy() && opMode.opModeIsActive()) { }
+        tele.update();
+        while (/**isBusy() &&**/ opMode.opModeIsActive()) { }
     }
 
     public boolean isBusy() {
@@ -96,10 +100,10 @@ public class HolonomicBot {
 
     public void setTargetPosition(int[] asMotor) {
 
-        motorFL.setTargetPosition(asMotor[0]);
-        motorFL.setTargetPosition(asMotor[1]);
-        motorFL.setTargetPosition(asMotor[2]);
-        motorFL.setTargetPosition(asMotor[3]);
+        motorFL.motor.setTargetPosition(asMotor[0]);
+        motorFR.motor.setTargetPosition(asMotor[1]);
+        motorBL.motor.setTargetPosition(asMotor[2]);
+        motorBR.motor.setTargetPosition(asMotor[3]);
     }
 
     public void autonomousMove(double x, double y, double rot, double speed, LinearOpMode opMode) {

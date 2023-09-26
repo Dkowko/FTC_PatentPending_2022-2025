@@ -1,9 +1,11 @@
 package org.firstinspires.ftc.teamcode.autos;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.botconfigs.PPBot;
 
+@Autonomous(name="PPBotAuto", group = "ppbot")
 public class PPBotAuto extends LinearOpMode {
 
     public PPBot robot;
