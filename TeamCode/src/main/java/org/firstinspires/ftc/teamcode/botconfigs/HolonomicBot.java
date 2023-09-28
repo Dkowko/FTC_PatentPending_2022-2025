@@ -30,6 +30,7 @@ public class HolonomicBot {
     public double speedFactor = 1;
 
     public double tickPerInch = 28 * 20 / (3 * Math.PI);
+    public double inchPerRad = 10;
 
     public HolonomicBot(Telemetry tele, HardwareMap map) {
 
@@ -59,10 +60,10 @@ public class HolonomicBot {
     public double[] toMotor(double x, double y, double rot) {
 
         return new double[] {
-                +x -y +rot,
-                -x +y +rot,
-                -x -y +rot,
-                +x +y +rot
+                -x -y +rot * inchPerRad,
+                -x +y +rot * inchPerRad,
+                +x -y +rot * inchPerRad,
+                +x +y +rot * inchPerRad
         };
     }
 
@@ -87,10 +88,10 @@ public class HolonomicBot {
         motorBR.motor.setPower(speed);
     }
 
-    public void waitUntilNotBusy(LinearOpMode opMode) {
+    public void waitUntilNotBusy(double speed, LinearOpMode opMode) {
 
         tele.update();
-        while (isBusy() && opMode.opModeIsActive()) { tele.update();}
+        while (isBusy() && opMode.opModeIsActive()) { tele.update(); toTargetPosition(speed); }
     }
 
     public boolean isBusy() {
@@ -115,9 +116,9 @@ public class HolonomicBot {
 
         setTargetPosition(x, y, rot);
         setRunMode(DcMotor.RunMode.RUN_TO_POSITION);
-        toTargetPosition(speed);
-        waitUntilNotBusy(opMode);
-        //driveRobotCentric(0, 0, 0);
+        waitUntilNotBusy(speed, opMode);
+        driveRobotCentric(0, 0, 0);
+        setRunMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
     public void driveRobotCentric(double x, double y, double rot) {
