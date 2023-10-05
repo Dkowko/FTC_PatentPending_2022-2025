@@ -77,15 +77,15 @@ public class patentPendingBot extends OpMode {
 // new code
         //full close=1
         if (input.gamepad2.getButton(GamepadKeys.Button.RIGHT_BUMPER)) {
-            rightClaw.setPosition(0.2);
-            leftClaw.setPosition(.65);
+            //rightClaw.setPosition(.7);
+            leftClaw.setPosition(.75);
             telemetry.addData("servo", "close");
             telemetry.update();
         }
         //full open=0
         if (input.gamepad2.getButton(GamepadKeys.Button.LEFT_BUMPER)) {
-            rightClaw.setPosition(.5);
-            leftClaw.setPosition(.4);
+            //rightClaw.setPosition(.6);
+            leftClaw.setPosition(.6);
             telemetry.addData("servo", "open");
             telemetry.update();
 
