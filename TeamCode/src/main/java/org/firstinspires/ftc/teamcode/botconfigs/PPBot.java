@@ -18,7 +18,7 @@ public class PPBot extends HolonomicBot {
     public PPBot(Telemetry tele, HardwareMap map) {
 
         super(tele, map);
-        claw = new SimpleServo(map, "rightClaw", 0, 90);
+        claw = new SimpleServo(map, "leftClaw", 0, 90);
         speedFactor = fastSpeed;
     }
 

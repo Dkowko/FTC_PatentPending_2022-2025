@@ -28,7 +28,7 @@ public class AprilTagProcessorPosition {
     private VisionPortal visionPortal;
 
     public int mainID = 1;
-    public double leftFlag = 0;
+    public double leftFlag = -7.5;
 
     public AprilTagProcessorPosition(Telemetry telemetry) {
         this.telemetry = telemetry;
