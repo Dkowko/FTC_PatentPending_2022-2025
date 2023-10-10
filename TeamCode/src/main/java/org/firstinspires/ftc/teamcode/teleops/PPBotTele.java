@@ -26,6 +26,11 @@ public class PPBotTele extends OpMode {
         robot.updateSpeed(gamepad1);
 
         // move robot based on controller inputs
-        robot.driveRobotCentric(gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.right_stick_x);
+        robot.driveFieldCentric(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x, robot.gyro.getAngle());
+
+        // move claw and slide
+        if (gamepad2.left_bumper) robot.closeClaw();
+        else if (gamepad2.right_bumper) robot.openClaw();
+        robot.raiseSlide(-gamepad2.left_stick_y);
     }
 }
