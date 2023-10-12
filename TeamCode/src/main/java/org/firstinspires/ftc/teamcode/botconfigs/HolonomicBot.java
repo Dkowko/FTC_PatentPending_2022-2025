@@ -123,11 +123,19 @@ public class HolonomicBot {
 
     public void driveRobotCentric(double x, double y, double rot) {
 
-        drive.driveRobotCentric(-y * linearSpeed * speedFactor, -x * linearSpeed * speedFactor, -rot * speedFactor, true);
+        x *= Math.abs(x);
+        y *= Math.abs(y);
+        rot *= Math.abs(rot);
+
+        drive.driveRobotCentric(-y * linearSpeed * speedFactor, -x * linearSpeed * speedFactor, -rot * speedFactor);
     }
 
     public void driveFieldCentric(double x, double y, double rot, double heading) {
 
-        drive.driveFieldCentric(-y * linearSpeed * speedFactor, -x * linearSpeed * speedFactor, -rot * speedFactor, -heading / Math.PI * 180, true);
+        x *= Math.abs(x);
+        y *= Math.abs(y);
+        rot *= Math.abs(rot);
+
+        drive.driveFieldCentric(-y * linearSpeed * speedFactor, -x * linearSpeed * speedFactor, -rot * speedFactor, -heading / Math.PI * 180);
     }
 }
