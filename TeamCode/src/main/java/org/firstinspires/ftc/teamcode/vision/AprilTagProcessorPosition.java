@@ -27,7 +27,7 @@ public class AprilTagProcessorPosition {
      */
     private VisionPortal visionPortal;
 
-    public int mainID = 1;
+    public int mainID = 2;
     public double leftFlag = -7.5;
 
     public AprilTagProcessorPosition(Telemetry telemetry) {
