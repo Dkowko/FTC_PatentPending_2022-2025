@@ -29,6 +29,8 @@ public class PPBotTele extends OpMode {
         robot.driveFieldCentric(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x, robot.gyro.getAngle());
 
         // move claw and slide
+        if (gamepad2.left_trigger > 0.5) robot.downWrist();
+        else if (gamepad2.right_trigger > 0.5) robot.upWrist();
         if (gamepad2.left_bumper) robot.closeClaw();
         else if (gamepad2.right_bumper) robot.openClaw();
         robot.raiseSlide(-gamepad2.left_stick_y);

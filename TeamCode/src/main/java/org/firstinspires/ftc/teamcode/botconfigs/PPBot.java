@@ -16,6 +16,7 @@ public class PPBot extends HolonomicBot {
     public double fastSpeed = 1;
     public double slideSpeed = 1;
 
+    public ServoEx wrist;
     public ServoEx claw;
     public Motor slide;
     public GyroWrap gyro;
@@ -23,6 +24,7 @@ public class PPBot extends HolonomicBot {
     public PPBot(Telemetry tele, HardwareMap map) {
 
         super(tele, map);
+        wrist = new SimpleServo(map, "rightClaw", 0, 90);
         claw = new SimpleServo(map, "leftClaw", 0, 90);
         slide = new Motor(map, "motorLS");
         gyro = new GyroWrap(null, tele, map, "gyro", 0, false);
@@ -35,6 +37,16 @@ public class PPBot extends HolonomicBot {
         if (gamepad1.b) speedFactor = slowSpeed;
         if (gamepad1.x) speedFactor = fastSpeed;
         tele.addData("speedFactor", speedFactor);
+    }
+
+    public void upWrist() {
+
+        wrist.setPosition(0.45);
+    }
+
+    public void downWrist() {
+
+        wrist.setPosition(0.05);
     }
 
     public void openClaw() {
