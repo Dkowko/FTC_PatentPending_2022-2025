@@ -41,12 +41,12 @@ public class PPBot extends HolonomicBot {
 
     public void upWrist() {
 
-        wrist.setPosition(0.45);
+        wrist.setPosition(0.35);
     }
 
     public void downWrist() {
 
-        wrist.setPosition(0.05);
+        wrist.setPosition(0);
     }
 
     public void openClaw() {
