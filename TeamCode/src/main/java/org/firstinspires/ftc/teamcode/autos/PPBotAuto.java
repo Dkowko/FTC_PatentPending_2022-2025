@@ -5,30 +5,32 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.botconfigs.PPBot;
 import org.firstinspires.ftc.teamcode.vision.AprilTagProcessorPosition;
+import org.firstinspires.ftc.teamcode.vision.TFPosDetect;
 
 @Autonomous(name="PPBotAuto", group = "ppbot")
 public class PPBotAuto extends LinearOpMode {
 
     public PPBot robot;
-    public AprilTagProcessorPosition vision;
+    public TFPosDetect vision;
 
     @Override
     public void runOpMode() {
 
         robot = new PPBot(telemetry, hardwareMap);
 
-        vision = new AprilTagProcessorPosition(telemetry);
-        vision.initAprilTag(hardwareMap);
+        vision = new TFPosDetect();
+        vision.initTfod(telemetry, hardwareMap);
 
         int location = 0;
         while (opModeInInit()) {
             robot.closeClaw();
-            vision.telemetryAprilTag();
+            robot.downWrist();
+            vision.telemetryTfod();
             location = vision.currentLocationDetected();
             telemetry.update();
         }
 
-        vision.closeAprilTag();
+        vision.closeTfod();
 
         switch (location) {
             case 0:

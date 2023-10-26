@@ -19,6 +19,13 @@ public class PPBotTele extends OpMode {
         robot = new PPBot(telemetry, hardwareMap);
     }
 
+    @Override
+    public void init_loop() {
+
+        robot.openClaw();
+        robot.downWrist();
+    }
+
     // looped after start
     @Override
     public void loop() {
