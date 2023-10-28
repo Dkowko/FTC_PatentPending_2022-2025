@@ -50,7 +50,7 @@ import java.util.List;
  */
 public class TFPosDetect {
 
-    public String filename = "modelWcone.tflite";
+    private static final String TFOD_MODEL_FILE = "/sdcard/FIRST/tflitemodels/modelWcone.tflite";
     public Telemetry telemetry;
     public HardwareMap hardwareMap;
     private static final boolean USE_WEBCAM = true;  // true for webcam, false for phone camera
@@ -60,13 +60,13 @@ public class TFPosDetect {
     private static final String TFOD_MODEL_ASSET = "MyModelStoredAsAsset.tflite";
     // TFOD_MODEL_FILE points to a model file stored onboard the Robot Controller's storage,
     // this is used when uploading models directly to the RC using the model upload interface.
-    private static final String TFOD_MODEL_FILE = "/sdcard/FIRST/tflitemodels/myCustomModel.tflite";
+
     // Define the labels recognized in the model for TFOD (must be in training order!)
     private static final String[] LABELS = {
-       "Pixel", "Cone"
+            "Cone", "Pixel"
     };
 
-    public double leftFlag = -7.5;
+    public double leftFlag = 150;
 
     /**
      * The variable to store our instance of the TensorFlow Object Detection processor.
@@ -92,7 +92,7 @@ public class TFPosDetect {
 
         // Create the TensorFlow processor by using a builder.
         TfodProcessor.Builder tfodBuilder = new TfodProcessor.Builder();
-        tfodBuilder.setModelFileName(filename);
+        tfodBuilder.setModelFileName(TFOD_MODEL_FILE);
         tfodBuilder.setModelLabels(LABELS);
         tfod = tfodBuilder.build();
 

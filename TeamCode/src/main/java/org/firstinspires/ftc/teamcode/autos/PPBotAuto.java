@@ -27,6 +27,7 @@ public class PPBotAuto extends LinearOpMode {
             robot.downWrist();
             vision.telemetryTfod();
             location = vision.currentLocationDetected();
+            telemetry.addData("LOCATION", location);
             telemetry.update();
         }
 
