@@ -66,7 +66,7 @@ public class TFPosDetect {
             "Cone", "Pixel"
     };
 
-    public double leftFlag = 150;
+    public double leftFlag = 200;
 
     /**
      * The variable to store our instance of the TensorFlow Object Detection processor.
@@ -144,7 +144,7 @@ public class TFPosDetect {
         visionPortal = builder.build();
 
         // Set confidence threshold for TFOD recognitions, at any time.
-        //tfod.setMinResultConfidence(0.75f);
+        tfod.setMinResultConfidence(0.4f);
 
         // Disable or re-enable the TFOD processor at any time.
         //visionPortal.setProcessorEnabled(tfod, true);
