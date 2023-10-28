@@ -50,7 +50,7 @@ import java.util.List;
  */
 public class TFPosDetect {
 
-    public String filename = "model.txt";
+    public String filename = "modelWcone.tflite";
     public Telemetry telemetry;
     public HardwareMap hardwareMap;
     private static final boolean USE_WEBCAM = true;  // true for webcam, false for phone camera
