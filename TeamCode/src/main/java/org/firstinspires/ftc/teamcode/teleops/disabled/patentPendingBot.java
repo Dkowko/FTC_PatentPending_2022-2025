@@ -19,10 +19,10 @@ public class patentPendingBot extends OpMode {
 
 
     pp robot;
-//    Servo rightClaw;
+    //    Servo rightClaw;
 //    Servo leftClaw;
-    public ServoEx rightClaw;
-    public ServoEx leftClaw;
+    public ServoEx wrist;
+    public ServoEx claw;
 
 
     public double armSpeed = 0.75;
@@ -32,8 +32,6 @@ public class patentPendingBot extends OpMode {
     public double speed;
     public double turn;
     public double strafe;
-
-
 
 
     // input system reference
@@ -51,8 +49,8 @@ public class patentPendingBot extends OpMode {
 
 //        rightClaw = hardwareMap.servo.get("rightClaw");
 //        leftClaw = hardwareMap.servo.get("leftClaw");
-        rightClaw = new SimpleServo(hardwareMap, "rightClaw", 0, 180);
-        leftClaw = new SimpleServo(hardwareMap, "leftClaw", 0, 180);
+        wrist = new SimpleServo(hardwareMap, "rightClaw", 0, 90);
+        claw = new SimpleServo(hardwareMap, "leftClaw", 0, 90);
 
         input = new GamepadSystem(this);
     }
@@ -73,30 +71,34 @@ public class patentPendingBot extends OpMode {
                 -gyro.getAngle() / 2 / Math.PI * 360);
 
         telemetry.addData("gyro", gyro.getAngle());
+        if (gamepad2.left_trigger > 0.5) downWrist();
+        else if (gamepad2.right_trigger > 0.5) upWrist();
+        if (gamepad2.left_bumper) closeClaw();
+        else if (gamepad2.right_bumper) openClaw();
 
-// new code
-        //full close=1
-        if (input.gamepad2.getButton(GamepadKeys.Button.RIGHT_BUMPER)) {
-            //rightClaw.setPosition(.7);
-            leftClaw.setPosition(.75);
-            telemetry.addData("servo", "close");
-            telemetry.update();
-        }
-        //full open=0
-        if (input.gamepad2.getButton(GamepadKeys.Button.LEFT_BUMPER)) {
-            //rightClaw.setPosition(.6);
-            leftClaw.setPosition(.6);
-            telemetry.addData("servo", "open");
-            telemetry.update();
+    }
 
 
 
 
-//        robot.drive.driveRobotCentric(
-//                input.gamepad1.getLeftY() * -linearSpeed,
-//                input.gamepad1.getLeftX() * -linearSpeed,
-//                input.gamepad1.getRightX() * -turnSpeed);
-        }
 
-    }}
+    public void upWrist() {
 
+        wrist.setPosition(0.35);
+    }
+
+    public void downWrist() {
+
+        wrist.setPosition(0.05);
+    }
+
+    public void openClaw() {
+
+        claw.setPosition(0.75);
+    }
+
+    public void closeClaw() {
+
+        claw.setPosition(0.6);
+    }
+}
