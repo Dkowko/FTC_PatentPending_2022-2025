@@ -63,7 +63,7 @@ public class TFPosDetect {
 
     // Define the labels recognized in the model for TFOD (must be in training order!)
     private static final String[] LABELS = {
-            "Cone", "Pixel"
+            "Cone", "Cone_Blue", "Pixel"
     };
 
     public double leftFlag = 200;
@@ -169,8 +169,8 @@ public class TFPosDetect {
         else return 1;
     }
 
-    public int currentLocationDetected() {
-        return locationFromX(firstRecognitionOfLabel("Cone", tfod.getRecognitions()));
+    public int currentLocationDetected(String label) {
+        return locationFromX(firstRecognitionOfLabel(label, tfod.getRecognitions()));
     }
 
 
