@@ -39,6 +39,12 @@ public class PPBot extends HolonomicBot {
         tele.addData("speedFactor", speedFactor);
     }
 
+    public void updateGyro(Gamepad gamepad1) {
+
+        if (gamepad1.y) referenceHeading = gyro.getAngle();
+        tele.addData("referenceHeading", referenceHeading);
+    }
+
     public void upWrist() {
 
         wrist.setPosition(0.35);

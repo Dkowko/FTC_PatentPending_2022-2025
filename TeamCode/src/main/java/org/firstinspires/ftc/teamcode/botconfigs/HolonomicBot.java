@@ -32,6 +32,8 @@ public class HolonomicBot {
     public double tickPerInch = 28 * 20 / (3 * Math.PI);
     public double inchPerRad = 10;
 
+    public double referenceHeading;
+
     public HolonomicBot(Telemetry tele, HardwareMap map) {
 
         // store debugging device
@@ -132,10 +134,6 @@ public class HolonomicBot {
 
     public void driveFieldCentric(double x, double y, double rot, double heading) {
 
-        x *= Math.abs(x);
-        y *= Math.abs(y);
-        rot *= Math.abs(rot);
-
-        drive.driveFieldCentric(-y * linearSpeed * speedFactor, -x * linearSpeed * speedFactor, -rot * speedFactor, -heading / Math.PI * 180);
+        drive.driveFieldCentric(-y * linearSpeed * speedFactor, -x * linearSpeed * speedFactor, -rot * speedFactor, -(heading - referenceHeading) / Math.PI * 180);
     }
 }

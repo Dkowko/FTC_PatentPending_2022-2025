@@ -31,6 +31,7 @@ public class PPBotTele extends OpMode {
     public void loop() {
 
         robot.updateSpeed(gamepad1);
+        robot.updateGyro(gamepad1);
 
         // move robot based on controller inputs
         robot.driveFieldCentric(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x, robot.gyro.getAngle());
