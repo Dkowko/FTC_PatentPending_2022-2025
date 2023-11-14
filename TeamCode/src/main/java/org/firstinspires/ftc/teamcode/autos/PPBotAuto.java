@@ -19,7 +19,7 @@ public class PPBotAuto extends LinearOpMode {
         robot = new PPBot(telemetry, hardwareMap);
 
         vision = new TFPosDetect();
-        vision.initTfod(telemetry, hardwareMap);
+        vision.initTfod(telemetry, hardwareMap, "Cone_Blue.tflite");
 
         int location = 0;
         while (opModeInInit()) {

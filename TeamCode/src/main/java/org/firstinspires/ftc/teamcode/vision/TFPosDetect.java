@@ -50,7 +50,7 @@ import java.util.List;
  */
 public class TFPosDetect {
 
-    private static final String TFOD_MODEL_FILE = "/sdcard/FIRST/tflitemodels/modelWcone.tflite";
+    private static final String TFOD_MODEL_FILE = "/sdcard/FIRST/tflitemodels/";
     public Telemetry telemetry;
     public HardwareMap hardwareMap;
     private static final boolean USE_WEBCAM = true;  // true for webcam, false for phone camera
@@ -85,14 +85,14 @@ public class TFPosDetect {
     /**
      * Initialize the TensorFlow Object Detection processor.
      */
-    public void initTfod(Telemetry telemetry, HardwareMap hardwareMap) {
+    public void initTfod(Telemetry telemetry, HardwareMap hardwareMap, String name) {
 
         this.telemetry = telemetry;
         this.hardwareMap = hardwareMap;
 
         // Create the TensorFlow processor by using a builder.
         TfodProcessor.Builder tfodBuilder = new TfodProcessor.Builder();
-        tfodBuilder.setModelFileName(TFOD_MODEL_FILE);
+        tfodBuilder.setModelFileName(TFOD_MODEL_FILE + name);
         tfodBuilder.setModelLabels(LABELS);
         tfod = tfodBuilder.build();
 
