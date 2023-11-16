@@ -21,12 +21,15 @@ public class PPBot extends HolonomicBot {
     public Motor slide;
     public GyroWrap gyro;
 
+    public Motor lift;
+
     public PPBot(Telemetry tele, HardwareMap map) {
 
         super(tele, map);
         wrist = new SimpleServo(map, "rightClaw", 0, 90);
         claw = new SimpleServo(map, "leftClaw", 0, 90);
         slide = new Motor(map, "motorLS");
+        lift = new Motor(map, "lift");
         gyro = new GyroWrap(null, tele, map, "gyro", 0, false);
         speedFactor = fastSpeed;
     }

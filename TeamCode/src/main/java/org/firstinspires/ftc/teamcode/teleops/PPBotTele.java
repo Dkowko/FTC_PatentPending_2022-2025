@@ -41,6 +41,7 @@ public class PPBotTele extends OpMode {
         else if (gamepad2.right_trigger > 0.5) robot.upWrist();
         if (gamepad2.left_bumper) robot.closeClaw();
         else if (gamepad2.right_bumper) robot.openClaw();
+        robot.lift.set(-gamepad2.right_stick_y);
         robot.raiseSlide(-gamepad2.left_stick_y);
     }
 }
