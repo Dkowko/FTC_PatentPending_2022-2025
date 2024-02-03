@@ -60,5 +60,9 @@ public class PPBotAutoRed extends LinearOpMode {
 
         robot.autonomousMove(36, 0, 0, robot.midSpeed, this);
         robot.autonomousMove(-3, 0, 0 , robot.slowSpeed, this);
+
+
+
+        robot.autonomousMove(0, -3, 0, robot.midSpeed, this);
     }
 }

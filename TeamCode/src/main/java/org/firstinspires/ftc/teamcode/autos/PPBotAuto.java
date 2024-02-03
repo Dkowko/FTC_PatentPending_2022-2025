@@ -23,12 +23,12 @@ public class PPBotAuto extends LinearOpMode {
 
         int location = 0;
         while (opModeInInit()) {
-            robot.closeClaw();
+            robot.closeClaw(); // set claw and wrist to start position
             robot.downWrist();
-            vision.telemetryTfod();
-            location = vision.currentLocationDetected("Cone");
-            telemetry.addData("LOCATION", location);
-            telemetry.update();
+            vision.telemetryTfod(); // output debug info from vision device
+            location = vision.currentLocationDetected("Cone"); // get location of "Cone"
+            telemetry.addData("LOCATION", location); // output debug info from vision device
+            telemetry.update(); // output debug info from vision device
         }
 
         vision.closeTfod();
@@ -60,5 +60,9 @@ public class PPBotAuto extends LinearOpMode {
 
         robot.autonomousMove(-36, 0, 0, robot.midSpeed, this);
         robot.autonomousMove(3, 0, 0 , robot.slowSpeed, this);
+
+
+
+        robot.autonomousMove(0, -3, 0, robot.midSpeed, this);
     }
 }

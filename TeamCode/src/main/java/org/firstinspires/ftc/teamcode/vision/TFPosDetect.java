@@ -153,22 +153,30 @@ public class TFPosDetect {
 
 
 
+    // retrieve first detection named "label" from list of recognitions provided by vision device
     public static Recognition firstRecognitionOfLabel(String label, List<Recognition> currentDetections) {
+        // iterate through recognitions
         for (Recognition detection : currentDetections) {
+            // return recognition if is "label"
             if (detection.getLabel().equals(label)) {
                 return detection;
             }
         }
+        // nothing found, return null
         return null;
     }
 
+    // 0 - LEFT; 1 - MIDDLE; 2 - RIGHT
     public int locationFromX(Recognition detection) {
 
+        // if nothing detected, default position (2)
         if (detection == null) return 2;
+        // return position of cone based on midpoint location in image by pixels (0 or 1)
         else if ((detection.getLeft() + detection.getRight()) / 2 < leftFlag) return 0;
         else return 1;
     }
 
+    // full recognition pipeline for object labeled "label"
     public int currentLocationDetected(String label) {
         return locationFromX(firstRecognitionOfLabel(label, tfod.getRecognitions()));
     }
