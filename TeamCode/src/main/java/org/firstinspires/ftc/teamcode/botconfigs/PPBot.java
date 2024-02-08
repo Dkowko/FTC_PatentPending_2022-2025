@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.hardware.AutoMotor;
 import org.firstinspires.ftc.teamcode.hardware.GyroWrap;
 
 public class PPBot extends HolonomicBot {
@@ -18,7 +19,7 @@ public class PPBot extends HolonomicBot {
 
     public ServoEx wrist;
     public ServoEx claw;
-    public Motor slide;
+    public AutoMotor slide;
     public GyroWrap gyro;
 
     public Motor lift;
@@ -28,7 +29,7 @@ public class PPBot extends HolonomicBot {
         super(tele, map);
         wrist = new SimpleServo(map, "rightClaw", 0, 90);
         claw = new SimpleServo(map, "leftClaw", 0, 90);
-        slide = new Motor(map, "motorLS");
+        slide = new AutoMotor(map, "motorLS", tele, (int)(385 / (1.3 * Math.PI)));
         lift = new Motor(map, "lift");
         gyro = new GyroWrap(null, tele, map, "gyro", 0, false);
         speedFactor = fastSpeed;

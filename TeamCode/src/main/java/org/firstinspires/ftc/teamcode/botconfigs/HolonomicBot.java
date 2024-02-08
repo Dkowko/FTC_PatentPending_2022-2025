@@ -30,7 +30,7 @@ public class HolonomicBot {
     public double speedFactor = 1;
 
     public double tickPerInch = 28 * 20 / (3 * Math.PI);
-    public double inchPerRad = 10;
+    public double inchPerRad = 13; //10;
 
     public double referenceHeading;
 
