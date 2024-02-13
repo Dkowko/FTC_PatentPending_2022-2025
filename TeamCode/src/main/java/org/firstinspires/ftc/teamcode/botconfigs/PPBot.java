@@ -12,7 +12,9 @@ import org.firstinspires.ftc.teamcode.hardware.GyroWrap;
 
 public class PPBot extends HolonomicBot {
 
+    public double slowslowSpeed = 0.3;
     public double slowSpeed = 0.4;
+    public double lowmidSpeed = 0.6;
     public double midSpeed = 0.7;
     public double fastSpeed = 1;
     public double slideSpeed = 1;
