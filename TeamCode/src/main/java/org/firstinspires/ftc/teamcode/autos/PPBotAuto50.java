@@ -32,40 +32,38 @@ public class PPBotAuto50 extends LinearOpMode {
 
         vision.closeTfod();
 
-        robot.upWrist();
+        robot.slide.autonomousMove(-2, 1, this);
         robot.autonomousMove(0, 18, 0, robot.slowSpeed, this);
 
         switch (location) {
             case 0:
-                robot.autonomousMove(0, 0, -Math.PI / 4, robot.slowSpeed, this);
-                robot.autonomousMove(-10, 0, 0, robot.slowslowSpeed, this);
-                robot.autonomousMove(10, 0, 0, robot.slowslowSpeed, this);
-                robot.autonomousMove(-6, 0, 0, robot.lowmidSpeed, this);
-                robot.autonomousMove(6, 0, 0, robot.lowmidSpeed, this);
+                robot.autonomousMove(0, 0, -Math.PI / 4, robot.slowslowSpeed, this);
+                robot.autonomousMove(-16, 0, 0, robot.slowslowSpeed, this);
+                robot.autonomousMove(4, 0, 0, robot.slowslowSpeed, this);
+                robot.autonomousMove(12, 0, 0, robot.lowmidSpeed, this);
                 robot.autonomousMove(0, 0, Math.PI / 4, robot.slowSpeed, this);
                 break;
             case 1:
-                robot.autonomousMove(0, 0, -Math.PI / 2, robot.slowSpeed, this);
-                robot.autonomousMove(-14, 0, 0, robot.slowslowSpeed, this);
-                robot.autonomousMove(14, 0, 0, robot.slowslowSpeed, this);
-                robot.autonomousMove(-10, 0, 0, robot.lowmidSpeed, this);
-                robot.autonomousMove(10, 0, 0, robot.lowmidSpeed, this);
+                robot.autonomousMove(0, 0, -Math.PI / 2, robot.slowslowSpeed, this);
+                robot.autonomousMove(-18, 0, 0, robot.slowslowSpeed, this);
+                robot.autonomousMove(4, 0, 0, robot.slowslowSpeed, this);
+                robot.autonomousMove(14, 0, 0, robot.lowmidSpeed, this);
                 robot.autonomousMove(0, 0, Math.PI / 2, robot.slowSpeed, this);
                 break;
             case 2:
-                robot.autonomousMove(0, 0, -3 * Math.PI / 4, robot.slowSpeed, this);
+                robot.autonomousMove(0, 0, -13 * Math.PI / 16, robot.slowslowSpeed, this);
                 robot.autonomousMove(-12, 0, 0, robot.slowslowSpeed, this);
-                robot.autonomousMove(12, 0, 0, robot.slowslowSpeed, this);
-                robot.autonomousMove(-8, 0, 0, robot.lowmidSpeed, this);
+                robot.autonomousMove(4, 0, 0, robot.slowslowSpeed, this);
                 robot.autonomousMove(8, 0, 0, robot.lowmidSpeed, this);
-                robot.autonomousMove(0, 0, 3 * Math.PI / 4, robot.slowSpeed, this);
+                robot.autonomousMove(0, 0, 13 * Math.PI / 16, robot.slowSpeed, this);
                 break;
         }
 
         robot.autonomousMove(-30, 6, 0, robot.slowSpeed, this);
         robot.autonomousMove(0, 0, Math.PI / 2, robot.slowSpeed, this);
 
-        robot.slide.autonomousMove(-4, 1, this);
+        robot.upWrist();
+        robot.slide.autonomousMove(-2, 1, this);
         switch (location) {
             case 0:
                 robot.autonomousMove(-6, 8, 0, robot.slowSpeed, this);
@@ -82,5 +80,16 @@ public class PPBotAuto50 extends LinearOpMode {
         robot.autonomousMove(0, -4, 0, robot.slowSpeed, this);
 
         robot.autonomousMove(0, 0, -Math.PI / 2, robot.slowSpeed, this);
+        switch (location) {
+            case 0:
+                robot.autonomousMove(0, -18, 0, robot.slowSpeed, this);
+                break;
+            case 1:
+                robot.autonomousMove(0, -24, 0, robot.slowSpeed, this);
+                break;
+            case 2:
+                robot.autonomousMove(0, -30, 0, robot.slowSpeed, this);
+                break;
+        }
     }
 }
