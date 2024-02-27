@@ -25,6 +25,7 @@ public class PPBotAuto extends LinearOpMode {
         while (opModeInInit()) {
             robot.closeClaw(); // set claw and wrist to start position
             robot.downWrist();
+            robot.holdDrone();
             vision.telemetryTfod(); // output debug info from vision device
             location = vision.currentLocationDetected("Cone"); // get location of "Cone"
             telemetry.addData("LOCATION", location); // output debug info from vision device

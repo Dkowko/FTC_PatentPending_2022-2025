@@ -21,6 +21,7 @@ public class PPBot extends HolonomicBot {
 
     public ServoEx wrist;
     public ServoEx claw;
+    public ServoEx drone;
     public AutoMotor slide;
     public GyroWrap gyro;
 
@@ -31,6 +32,7 @@ public class PPBot extends HolonomicBot {
         super(tele, map);
         wrist = new SimpleServo(map, "rightClaw", 0, 90);
         claw = new SimpleServo(map, "leftClaw", 0, 90);
+        drone = new SimpleServo(map, "drone_servo", 0, 90);
         slide = new AutoMotor(map, "motorLS", tele, (int)(385 / (1.3 * Math.PI)));
         lift = new Motor(map, "lift");
         gyro = new GyroWrap(null, tele, map, "gyro", 0, false);
@@ -49,6 +51,16 @@ public class PPBot extends HolonomicBot {
 
         if (gamepad1.y) referenceHeading = gyro.getAngle();
         tele.addData("referenceHeading", referenceHeading);
+    }
+
+    public void releaseDrone() {
+
+        drone.setPosition(0);
+    }
+
+    public void holdDrone() {
+
+        drone.setPosition(0.4);
     }
 
     public void upWrist() {

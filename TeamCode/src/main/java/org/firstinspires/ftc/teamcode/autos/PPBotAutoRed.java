@@ -25,6 +25,7 @@ public class PPBotAutoRed extends LinearOpMode {
         while (opModeInInit()) {
             robot.closeClaw();
             robot.downWrist();
+            robot.holdDrone();
             vision.telemetryTfod();
             location = vision.currentLocationDetected("Cone");
             telemetry.addData("LOCATION", location);
