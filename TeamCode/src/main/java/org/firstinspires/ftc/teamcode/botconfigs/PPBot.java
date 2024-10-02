@@ -30,9 +30,9 @@ public class PPBot extends HolonomicBot {
     public PPBot(Telemetry tele, HardwareMap map) {
 
         super(tele, map);
-        wrist = new SimpleServo(map, "rightClaw", 0, 90);
-        claw = new SimpleServo(map, "leftClaw", 0, 90);
-        drone = new SimpleServo(map, "drone_servo", 0, 90);
+        wrist = new SimpleServo(map, "wrist", 0, 90);
+        claw = new SimpleServo(map, "claw", 0, 90);
+        //drone = new SimpleServo(map, "drone_servo", 0, 90);
         slide = new AutoMotor(map, "motorLS", tele, (int)(385 / (1.3 * Math.PI)));
         lift = new Motor(map, "lift");
         gyro = new GyroWrap(null, tele, map, "gyro", 0, false);
@@ -55,12 +55,12 @@ public class PPBot extends HolonomicBot {
 
     public void releaseDrone() {
 
-        drone.setPosition(0);
+        //drone.setPosition(0);
     }
 
     public void holdDrone() {
 
-        drone.setPosition(0.4);
+        //drone.setPosition(0.4);
     }
 
     public void upWrist() {
@@ -80,7 +80,7 @@ public class PPBot extends HolonomicBot {
 
     public void closeClaw() {
 
-        claw.setPosition(0.6);
+        claw.setPosition(0.4);
     }
 
     public void raiseSlide(double speed) {
