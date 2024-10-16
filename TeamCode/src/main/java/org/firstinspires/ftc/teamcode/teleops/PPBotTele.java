@@ -24,7 +24,7 @@ public class PPBotTele extends OpMode {
 
         robot.openClaw();
         robot.downWrist();
-        //robot.holdDrone();
+        robot.holdDrone();
     }
 
     // looped after start
@@ -35,11 +35,11 @@ public class PPBotTele extends OpMode {
         robot.updateGyro(gamepad1);
 
         // move robot based on controller inputs
-        robot.driveFieldCentric(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x, robot.gyro.getAngle());
+        robot.driveRobotCentric(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x);
 
         // move claw and slide
-        //if (gamepad1.left_bumper) robot.holdDrone();
-        //else if (gamepad1.right_bumper) robot.releaseDrone();
+        if (gamepad1.left_bumper) robot.holdDrone();
+        else if (gamepad1.right_bumper) robot.releaseDrone();
         if (gamepad2.left_trigger > 0.5) robot.downWrist();
         else if (gamepad2.right_trigger > 0.5) robot.upWrist();
         if (gamepad2.left_bumper) robot.closeClaw();
