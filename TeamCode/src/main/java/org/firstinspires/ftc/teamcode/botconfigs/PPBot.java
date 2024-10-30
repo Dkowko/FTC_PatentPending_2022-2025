@@ -21,7 +21,7 @@ public class PPBot extends HolonomicBot {
 
     public ServoEx wrist;
     public ServoEx claw;
-    public ServoEx drone;
+    // public ServoEx drone;
     public AutoMotor slide;
     public GyroWrap gyro;
 
@@ -65,16 +65,16 @@ public class PPBot extends HolonomicBot {
 
     public void upWrist() {
 
-        wrist.setPosition(0.8);
+        wrist.setPosition(0.6);
     }
 
     public void downWrist() {
 
-        wrist.setPosition(0.69);
+        wrist.setPosition(0.05);
     }
 
     public void openClaw() {
-
+ 
         claw.setPosition(0.5);
     }
 
@@ -88,3 +88,4 @@ public class PPBot extends HolonomicBot {
         slide.set(-speed * slideSpeed);
     }
 }
+/// WAAAAAAAAZAHHHHHHHHH

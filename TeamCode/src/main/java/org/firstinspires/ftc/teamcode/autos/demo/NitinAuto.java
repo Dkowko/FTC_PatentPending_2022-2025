@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.teamcode.autos.demo;
 
-public class PPAuto1 {package org.firstinspires.ftc.teamcode.autos;
-
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -9,7 +7,7 @@ import org.firstinspires.ftc.teamcode.botconfigs.PPBot;
 import org.firstinspires.ftc.teamcode.vision.AprilTagProcessorPosition;
 import org.firstinspires.ftc.teamcode.vision.TFPosDetect;
 
-    @Autonomous(name="NitinAuto", group = "ppbot")
+    @Autonomous(name="NitinAuto.java", group = "ppbot")
     public class NitinAuto extends LinearOpMode {
 
         public PPBot robot;
@@ -24,13 +22,13 @@ import org.firstinspires.ftc.teamcode.vision.TFPosDetect;
 
 
 
-            sleep(1000);
-            robot.upWrist();
+            sleep(1000); //robot stays still / "sleeps"
+            robot.upWrist(); //robot wrist lifts/raises
             robot.upWrist();
             sleep(1000);
 
 
-            robot.slide.autonomousMove(-10, 2, this);
+            robot.slide.autonomousMove(-10, 2, this); // robot slide moves
             sleep(500);
 
 
@@ -38,10 +36,10 @@ import org.firstinspires.ftc.teamcode.vision.TFPosDetect;
             //robot.autonomousMove(0, 0, 0 , robot.slowSpeed, this);
 
 
-            sleep(1000);
+            sleep(1000); // pause
 
             //robot.claw.setPosition(0.74);
-            sleep(1000);
+            sleep(1000); // pause
             //robot.autonomousMove(0, -2, 0, robot.midSpeed, this);
 
 
@@ -54,4 +52,5 @@ import org.firstinspires.ftc.teamcode.vision.TFPosDetect;
     }
 
 
-}
+
+
