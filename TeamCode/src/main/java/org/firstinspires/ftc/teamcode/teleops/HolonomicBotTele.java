@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.botconfigs.HolonomicBot;
+import org.firstinspires.ftc.teamcode.botconfigs.PPBot;
 
 @TeleOp(name="HolonomicBotTele", group="HolonomicBot")
 public class HolonomicBotTele extends OpMode {
@@ -24,6 +25,22 @@ public class HolonomicBotTele extends OpMode {
     public void loop() {
 
         // move robot based on controller inputs
-        robot.driveRobotCentric(gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.right_stick_x);
+        robot.driveRobotCentric(-gamepad1.left_stick_x, gamepad1.left_stick_y, -gamepad1.right_stick_x);
+
+
+        if (gamepad2.left_trigger > 0.5) {
+            robot.downWrist(); // DOWN WRIST COMMAND
+        }
+        if (gamepad2.right_trigger > 0.5) {
+            robot.upWrist(); // UP WRIST COMMAND
+        }
+        if (!gamepad2.left_bumper) {
+            if (gamepad2.right_bumper) {
+                robot.openClaw(); // OPEN CLAW COMMAND
+            }
+        } else {
+            robot.closeClaw(); // CLOSE CLAW COMMAND
+        }
+        robot.raiseSlide(-gamepad2.left_stick_y);// RAISE THE SLIDE
     }
 }

@@ -7,9 +7,12 @@ import com.arcrobotics.ftclib.hardware.motors.Motor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.hardware.AutoMotor;
 import org.firstinspires.ftc.teamcode.hardware.MecDriveFlip;
 
 public class HolonomicBot {
@@ -23,6 +26,10 @@ public class HolonomicBot {
     public Motor motorFR;
     public Motor motorBL;
     public Motor motorBR;
+
+    public DcMotor slide;
+    public Servo claw;
+    public Servo wrist;
 
     // speeds
     public double linearSpeed = 1;
@@ -44,6 +51,16 @@ public class HolonomicBot {
         motorFR = new Motor(map, "motorFR");
         motorBL = new Motor(map, "motorBL");
         motorBR = new Motor(map, "motorBR");
+
+        motorFL.motor.setDirection(DcMotorSimple.Direction.REVERSE);
+        motorBL.motor.setDirection(DcMotorSimple.Direction.REVERSE);
+        motorBR.motor.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        wrist = map.servo.get("wrist");
+        claw = map.servo.get("claw");
+        //drone = new SimpleServo(map, "drone_servo", 0, 90);
+        slide = map.dcMotor.get("motorLS");
+
         drive = new MecDriveFlip(motorFL, motorFR, motorBL, motorBR);
 
         // run mode
@@ -135,5 +152,30 @@ public class HolonomicBot {
     public void driveFieldCentric(double x, double y, double rot, double heading) {
 
         drive.driveFieldCentric(-y * linearSpeed * speedFactor, -x * linearSpeed * speedFactor, -rot * speedFactor, -(heading - referenceHeading) / Math.PI * 180);
+    }
+
+    public void upWrist() {
+
+        wrist.setPosition(0.6);
+    }
+
+    public void downWrist() {
+
+        wrist.setPosition(0.1);
+    }
+
+    public void openClaw() {
+
+        claw.setPosition(0.5);
+    }
+
+    public void closeClaw() {
+
+        claw.setPosition(0.83);
+    }
+
+    public void raiseSlide(double speed) {
+
+        slide.setPower(-speed);
     }
 }

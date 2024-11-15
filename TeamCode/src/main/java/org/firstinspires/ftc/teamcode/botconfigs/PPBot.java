@@ -34,7 +34,6 @@ public class PPBot extends HolonomicBot {
         claw = new SimpleServo(map, "claw", 0, 90);
         //drone = new SimpleServo(map, "drone_servo", 0, 90);
         slide = new AutoMotor(map, "motorLS", tele, (int)(385 / (1.3 * Math.PI)));
-        lift = new Motor(map, "lift");
         gyro = new GyroWrap(null, tele, map, "gyro", 0, false);
         speedFactor = fastSpeed;
     }
