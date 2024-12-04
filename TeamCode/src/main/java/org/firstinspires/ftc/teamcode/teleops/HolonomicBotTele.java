@@ -41,6 +41,15 @@ public class HolonomicBotTele extends OpMode {
         } else {
             robot.closeClaw(); // CLOSE CLAW COMMAND
         }
+
+        if(gamepad2.dpad_up)
+        {
+            robot.eeeRRR.setPower(0.6);
+        }
+        else if(gamepad2.dpad_down)
+        {
+            robot.eeeRRR.setPower(-0.6);
+        }
         robot.raiseSlide(-gamepad2.left_stick_y);// RAISE THE SLIDE
     }
 }
