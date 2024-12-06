@@ -44,11 +44,16 @@ public class HolonomicBotTele extends OpMode {
 
         if(gamepad2.dpad_up)
         {
-            robot.eeeRRR.setPower(0.6);
+            robot.eeeRRR.setPower(-1);
         }
         else if(gamepad2.dpad_down)
         {
-            robot.eeeRRR.setPower(-0.6);
+            robot.eeeRRR.setPower(1);
+
+        }
+        else
+        {
+            robot.eeeRRR.setPower(0);
         }
         robot.raiseSlide(-gamepad2.left_stick_y);// RAISE THE SLIDE
     }
