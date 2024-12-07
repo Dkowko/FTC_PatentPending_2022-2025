@@ -6,7 +6,6 @@ import com.arcrobotics.ftclib.hardware.SimpleServo;
 import com.arcrobotics.ftclib.hardware.motors.Motor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -31,7 +30,7 @@ public class HolonomicBot {
     public DcMotor slide;
     public Servo claw;
     public Servo wrist;
-    public CRServo eeeRRR;
+    public Servo eeeRRR;
 
     // speeds
     public double linearSpeed = 1;
@@ -60,7 +59,7 @@ public class HolonomicBot {
 
         wrist = map.servo.get("wrist");
         claw = map.servo.get("claw");
-        eeeRRR = map.crservo.get("eeeRRR");
+        eeeRRR = map.servo.get("eeeRRR");
         //drone = new SimpleServo(map, "drone_servo", 0, 90);
         slide = map.dcMotor.get("motorLS");
 
@@ -180,5 +179,10 @@ public class HolonomicBot {
     public void raiseSlide(double speed) {
 
         slide.setPower(-speed);
+    }
+    public void eeeRRR() {
+
+
+
     }
 }
